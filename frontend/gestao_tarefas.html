@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gestão de Tarefas</title>
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body>
+  <aside>
+    <div class="logo">
+      <i class="fa-solid fa-calendar-check"></i> Minha Agenda
+    </div>
+    <nav>
+      <a href="index.html" class="nav-link"><i class="fa-solid fa-sun"></i> Hoje</a>
+      <a href="tarefas.html" class="nav-link"><i class="fa-solid fa-list"></i> Tarefas</a>
+      <a href="pendentes.html" class="nav-link"><i class="fa-solid fa-xmark"></i> Pendentes</a>
+      <a href="gestao_tarefas.html" class="nav-link active"><i class="fa-solid fa-list-check"></i> Gestão</a>
+    </nav>
+  </aside>
+  <main>
+    <div class="wrapper">
+      <div class="page-header">
+        <h1><i class="fa-solid fa-list-check"></i> Gestão de Tarefas</h1>
+        <button class="btn-primary" id="btnNova"><i class="fa-solid fa-plus"></i> Nova Tarefa</button>
+      </div>
+      <form class="filters" id="formFiltro" autocomplete="off">
+        <label>Título
+          <input type="text" id="fTitulo" placeholder="Buscar...">
+        </label>
+        <label>Data
+          <input type="date" id="fData">
+        </label>
+        <label>Status
+          <select id="fStatus">
+            <option value="">Todos</option>
+            <option value="pendente">Pendente</option>
+            <option value="concluida">Concluída</option>
+          </select>
+        </label>
+        <button type="submit" class="btn">Filtrar</button>
+      </form>
+      <table>
+        <thead>
+          <tr>
+            <th>Título</th>
+            <th>Descrição</th>
+            <th>Data</th>
+            <th>Hora</th>
+            <th>Status</th>
+            <th style="text-align:center;width:90px;">Ações</th>
+          </tr>
+        </thead>
+        <tbody id="tbodyTarefas"></tbody>
+      </table>
+    </div>
+  </main>
+  <div id="modalTarefa" class="modal hidden">
+    <div class="modal-content">
+      <h2 id="modalTitulo">Nova Tarefa</h2>
+      <form id="formTarefa" autocomplete="off">
+        <input type="hidden" id="tarefaId">
+        <label>Título
+          <input type="text" id="titulo" required maxlength="50">
+        </label>
+        <label>Descrição
+          <textarea id="descricao" rows="2" maxlength="200"></textarea>
+        </label>
+        <label>Data
+          <input type="date" id="data" required>
+        </label>
+        <label>Hora
+          <input type="time" id="hora" required>
+        </label>
+        <label>Status
+          <select id="status">
+            <option value="pendente">Pendente</option>
+            <option value="concluida">Concluída</option>
+          </select>
+        </label>
+        <div class="modal-actions">
+          <button type="submit" class="btn-primary">Salvar</button>
+          <button type="button" id="btnCancelar" class="btn">Cancelar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <script src="js/gestao_tarefas.js"></script>
+</body>
+</html>

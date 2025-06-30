@@ -1,0 +1,318 @@
+:root {
+  --cor-principal: #2563eb;
+  --cor-principal-escura: #1e40af;
+  --cor-fundo: #dbeafe;
+  --cor-branca: #fff;
+  --cinza: #64748b;
+  --radius: 10px;
+  --borda: #e2e8f0;
+  --sombra: 0 4px 16px rgba(0,0,0,0.07);
+}
+/* reset basico */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+/* corpo e texto */
+body, html {
+  font-family: "Poppins", sans-serif;
+  background: var(--cor-fundo);
+  color: #222;
+  min-height: 100vh;
+}
+/* sidebar (menu) */
+aside {
+  background: var(--cor-branca);
+  width: 250px;
+  height: 100vh;
+  position: fixed;
+  left: 0; top: 0;
+  box-shadow: 2px 0 10px rgba(0,0,0,0.04);
+  padding: 28px 12px 16px 12px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* logo */
+.logo {
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: var(--cor-principal);
+  margin-bottom: 1.8rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* links do menu */
+.nav-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: var(--radius);
+  text-decoration: none;
+  color: #222;
+  font-weight: 500;
+  margin-bottom: 4px;
+  transition: background 0.2s, color 0.2s;
+}
+.nav-link:hover, .nav-link.active {
+  background: var(--cor-principal);
+  color: #fff;
+}
+main {
+  margin-left: 250px;
+  padding: 32px 20px;
+}
+
+/* caixa principal atras das listas */
+.wrapper {
+  background: #fff;
+  border-radius: var(--radius);
+  box-shadow: var(--sombra);
+  padding: 24px 16px;
+  margin-bottom: 24px;
+}
+
+/* cabeçalho das pag */
+.header, .page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+.header h1, .page-header {
+  font-size:  1 arial;
+  color: var(--cor-principal-escura);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* botoes */
+.btn-primary {
+  background: var(--cor-principal);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius);
+  padding: 8px 15px;
+  font-size: 1rem;
+  cursor: pointer;
+  font-weight: 500;
+  margin-left: 10px;
+}
+.btn-primary:hover { opacity: 0.89; }
+
+.btn-outline {
+  border: 1.5px solid var(--cor-principal);
+  background: #fff;
+  color: var(--cor-principal);
+  border-radius: var(--radius);
+  padding: 8px 15px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.14s, color 0.14s;
+}
+.btn-outline:hover {
+  background: var(--cor-principal);
+  color: #fff;
+}
+
+/* listagem de tarefas (index, tarefas, pendentes e gestao) */
+.tarefas {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.tarefa-item {
+  background: #fff;
+  border-radius: var(--radius);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  padding: 14px 18px;
+  cursor: pointer;
+  border: 1px solid #eee;
+  transition: box-shadow 0.18s, border 0.14s;
+  margin-bottom: 4px;
+}
+.tarefa-item:hover, .tarefa-item.open {
+  box-shadow: 0 6px 18px rgba(37,99,235,0.08);
+  border: 1.5px solid #2563eb20;
+}
+.tarefa-cabecalho, .tarefa-header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 14px;
+}
+.tarefa-titulo {
+  font-weight: 600;
+  color: #000;
+  font-size: 1.07rem;
+}
+.status-chip {
+  background: #fef9c3;
+  color: #b45309;
+  font-size: .85rem;
+  padding: 3px 10px;
+  border-radius: 8px;
+  font-weight: 500;
+  margin-left: auto;
+}
+.status-chip.concluida {
+  background: #bbf7d0;
+  color: #047857;
+}
+.tarefa-desc {
+  display: none;
+  font-size: 0.93rem;
+  margin-top: 7px;
+  color: #666;
+  line-height: 1.4;
+}
+.tarefa-item.open .tarefa-desc {
+  display: block;
+}
+.tarefa-info, .tarefa-meta {
+  color: #64748b;
+  font-size: .88rem;
+  margin-top: 3px;
+}
+
+/* nova tarefa */
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.44);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 50;
+}
+.modal.hidden { display: none; }
+.modal-content {
+  background: #fff;
+  border-radius: var(--radius);
+  padding: 32px 22px;
+  max-width: 420px;
+  width: 98%;
+  box-shadow: var(--sombra);
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.modal-content h2 { 
+  font-size: 1.23rem; 
+  color: var(--cor-principal-escura); 
+}
+.modal-content label { 
+  display: flex; 
+  flex-direction: column; 
+  gap: 3px; 
+  font-size: .95rem; 
+}
+.modal-content input, .modal-content textarea, .modal-content select {
+  padding: 8px 11px;
+  border: 1px solid var(--borda);
+  border-radius: var(--radius);
+  font-size: .97rem;
+  font-family: inherit;
+}
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+/* acao botao pag gestao */
+.actions-btn {
+  background: none;
+  border: none;
+  font-size: 1.12rem;
+  color: #888;
+  cursor: pointer;
+  padding: 4px 6px;
+  border-radius: 6px;
+  transition: background 0.14s;
+}
+.actions-btn:hover {
+  background: #e0e7ff;
+  color: #1e40af;
+}
+
+/* gestao de tarefa(tabela) */
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 14px rgba(36,99,235,0.07);
+  overflow: hidden;
+  margin-top: 18px;
+  font-size: 1rem;
+}
+th, td {
+  padding: 13px 15px;
+  border-bottom: 1px solid #e5e7eb;
+  text-align: left;
+  vertical-align: middle;
+}
+th {
+  background: #e7f0ff;
+  color: #223f7a;
+  font-weight: 600;
+  font-size: 1.05rem;
+}
+
+/* btn +tarefa */
+.page-header, .header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+/* filtros da página de tarefas */
+.filters {
+  display: flex;
+  gap: 8px;          /* espaço entre os filtros */
+  align-items: flex-end;
+  margin-bottom: 14px;
+}
+
+/* deixa as labels uma em cima da outra */
+.filters label {
+  display: flex;
+  flex-direction: column;
+  font-size: 15px;
+  color: #444;
+}
+
+/* campos de texto, data e select */
+.filters input[type="text"],
+.filters input[type="date"],
+.filters select {
+  padding: 5px;
+  border: 1px solid #bbb;   /* borda cinza básica */
+  border-radius: 5px;
+  font-size: 15px;
+  background: #fff;
+  color: #222;
+}
+
+/* botão de filtrar */
+.filters .btn {
+  padding: 6px 13px;
+  border: none;
+  border-radius: 5px;
+  background: #3266cc;
+  color: #fff;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+/* botão quando passa o mouse em cima */
+.filters .btn:hover {
+  background: #204080;
+}

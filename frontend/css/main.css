@@ -1,6 +1,6 @@
 :root {
-  --cor-principal: #2563eb;
-  --cor-principal-escura: #1e40af;
+  --cor-principal: #2466f3;
+  --cor-principal-escura: #0d3ace;
   --cor-fundo: #dbeafe;
   --cor-branca: #fff;
   --cinza: #64748b;
@@ -13,7 +13,7 @@
 
 /* corpo e texto */
 body, html {
-  font-family: "Poppins", sans-serif;
+  font-family: sans-serif;
   background: var(--cor-fundo);
   color: #222;
   min-height: 100vh;
@@ -53,7 +53,6 @@ aside {
   color: #222;
   font-weight: 500;
   margin-bottom: 4px;
-  transition: background 0.2s, color 0.2s;
 }
 .nav-link:hover, .nav-link.active {
   background: var(--cor-principal);
@@ -111,7 +110,6 @@ main {
   font-size: 1rem;
   font-weight: 500;
   cursor: pointer;
-  transition: background 0.14s, color 0.14s;
 }
 .btn-outline:hover {
   background: var(--cor-principal);
@@ -233,7 +231,6 @@ main {
   cursor: pointer;
   padding: 4px 6px;
   border-radius: 6px;
-  transition: background 0.14s;
 }
 .actions-btn:hover {
   background: #e0e7ff;
@@ -276,7 +273,7 @@ th {
 /* filtros da página de tarefas */
 .filters {
   display: flex;
-  gap: 8px;          /* espaço entre os filtros */
+  gap: 8px;          
   align-items: flex-end;
   margin-bottom: 14px;
 }
@@ -294,7 +291,7 @@ th {
 .filters input[type="date"],
 .filters select {
   padding: 5px;
-  border: 1px solid #bbb;   /* borda cinza básica */
+  border: 1px solid #bbbbbbd8;  
   border-radius: 5px;
   font-size: 15px;
   background: #fff;
